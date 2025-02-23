@@ -1,0 +1,178 @@
+/* General Styles - Dark Theme */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #121212;
+    color: #ffffff;
+}
+
+/* Ensure Root Div Takes Full Width */
+#root {
+    width: 100%;
+    max-width: 100vw; /* Full viewport width */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Title - Centered */
+h1 {
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+/* Task Input Form */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    background: #1e1e2e;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 30px;
+}
+
+/* Form Fields */
+form input,
+form textarea,
+form select {
+    width: 100%;
+    padding: 14px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    background: #252525;
+    color: white;
+    font-size: 16px;
+}
+
+form button {
+    width: 100%;
+    padding: 14px;
+    border-radius: 8px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Kanban Board Layout - Full Width */
+.kanban {
+    display: flex;
+    justify-content: space-between; /* Distributes columns to edges */
+    align-items: stretch;
+    width: 100%;
+    max-width: 100vw; /* Ensures full page width */
+    gap: 10px;
+    padding: 20px;
+}
+
+/* Each Kanban Column Takes Exactly 1/3 of the Screen */
+.column {
+    flex: 1; /* Makes each column take equal width */
+    max-width: 33.33%;
+    background: #1e1e2e;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Column Headers */
+.column h2 {
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #444;
+    width: 100%;
+}
+
+/* Task Cards */
+.task-card {
+    background: #252525;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+    margin-bottom: 15px;
+    width: 90%;
+    text-align: center;
+}
+
+/* Task Buttons */
+.task-meta {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.task-meta button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 14px;
+}
+
+.task-meta button:hover {
+    background: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .kanban {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .column {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    form {
+        max-width: 90%;
+    }
+
+    form input,
+    form textarea,
+    form select {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    form button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .task-meta button {
+        font-size: 12px;
+        padding: 8px 10px;
+    }
+}

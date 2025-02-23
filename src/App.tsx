@@ -1,47 +1,35 @@
 import React, { useState } from "react";
-import TaskList from "./TaskList";
-import AddTask from "./AddTask";
+import TaskList from "./components/TaskList";
+import AddTask from "./components/AddTask";
 import { Task } from "./types";
 
 const App: React.FC = () => {
     const [tasks, setTasks] = useState<Task[]>([]);
 
-    const addTask = (title: string, priority: "low" | "medium" | "high") => {
+    const addTask = (title: string, description: string, priority: "low" | "medium" | "high") => {
         const newTask: Task = {
             id: Date.now(),
             title,
-            completed: false,
-            priority
+            description,
+            priority,
+            status: "todo"
         };
         setTasks([...tasks, newTask]);
     };
 
-    const toggleTask = (id: number) => {
-        setTasks(tasks.map(task =>
-            task.id === id ? { ...task, completed: !task.completed } : task
-        ));
-    };
-
-    const deleteTask = (id: number) => {
-        setTasks(tasks.filter(task => task.id !== id));
-    };
-
-    const updatePriority = (id: number, priority: "low" | "medium" | "high") => {
-        setTasks(tasks.map(task =>
-            task.id === id ? { ...task, priority } : task
-        ));
+    const moveTask = (taskId: number, newStatus: "todo" | "review" | "completed") => {
+        setTasks(tasks.map(task => task.id === taskId ? { ...task, status: newStatus } : task));
     };
 
     return (
-        <div>
-            <h1>Task Manager</h1>
+        <div className="app">
+            <h1>Todo List</h1>
             <AddTask addTask={addTask} />
-            <TaskList
-                tasks={tasks}
-                toggleTask={toggleTask}
-                deleteTask={deleteTask}
-                updatePriority={updatePriority}
-            />
+            <div className="kanban">
+                <TaskList title="To Do" tasks={tasks} status="todo" moveTask={moveTask} />
+                <TaskList title="For Review" tasks={tasks} status="review" moveTask={moveTask} />
+                <TaskList title="Completed" tasks={tasks} status="completed" moveTask={moveTask} />
+            </div>
         </div>
     );
 };
