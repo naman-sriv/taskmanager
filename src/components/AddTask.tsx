@@ -20,6 +20,7 @@ const AddTask: React.FC<AddTaskProps> = ({ addTask }) => {
     };
 
     return (
+        <div className="form-container">
         <form onSubmit={handleSubmit}>
             <input
                 type="text"
@@ -42,6 +43,7 @@ const AddTask: React.FC<AddTaskProps> = ({ addTask }) => {
             </select>
             <button type="submit">Add Task</button>
         </form>
+        </div>
     );
 };
 
